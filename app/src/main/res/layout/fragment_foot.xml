@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tutorial_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/foot_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/tutorial_foot"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/foot_left_circle_1_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginLeft="120px"
+        android:layout_marginTop="50px"
+        android:src="@drawable/tutorial_circle_default"
+        />
+
+    <ImageView
+        android:id="@+id/foot_left_circle_checked_1_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginLeft="120px"
+        android:layout_marginTop="50px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/foot_left_circle_2_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginLeft="50px"
+        android:layout_marginTop="330px"
+        android:src="@drawable/tutorial_circle_default"
+        />
+
+    <ImageView
+        android:id="@+id/foot_left_circle_checked_2_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginLeft="50px"
+        android:layout_marginTop="330px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/foot_left_circle_3_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginLeft="200px"
+        android:layout_marginTop="580px"
+        android:src="@drawable/tutorial_circle_default"
+        />
+
+    <ImageView
+        android:id="@+id/foot_left_circle_checked_3_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginLeft="200px"
+        android:layout_marginTop="580px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/foot_right_circle_1_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginTop="220px"
+        android:layout_marginEnd="100px"
+        android:src="@drawable/tutorial_circle_default"
+        />
+
+    <ImageView
+        android:id="@+id/foot_right_circle_checked_1_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginTop="220px"
+        android:layout_marginEnd="100px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/foot_right_circle_2_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginTop="500px"
+        android:layout_marginEnd="90px"
+        android:src="@drawable/tutorial_circle_default"
+        />
+
+    <ImageView
+        android:id="@+id/foot_right_circle_checked_2_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginTop="500px"
+        android:layout_marginEnd="90px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/foot_right_circle_3_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginTop="740px"
+        android:layout_marginEnd="230px"
+        android:src="@drawable/tutorial_circle_default"
+        />
+
+    <ImageView
+        android:id="@+id/foot_right_circle_checked_3_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginTop="740px"
+        android:layout_marginEnd="230px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

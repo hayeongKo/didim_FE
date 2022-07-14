@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <solid android:color="#33FF0000"/>
+    <stroke android:color="@color/tutorial_circle" android:width="10px"/>
+    <size android:width="220px" android:height="220px"/>
+</shape>
