@@ -4,14 +4,30 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="detail"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/detail_content_tb"
+        android:layout_width="600px"
+        android:layout_height="70px"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="200px"
+        app:tabIndicator="@color/transpoart"
+        app:tabIndicatorFullWidth="false"
+        app:tabTextAppearance="@style/tab_text"
+        app:tabBackground="@drawable/detail_tab_background"
+        />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/detail_content_vp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detail_content_tb"
         app:layout_constraintBottom_toBottomOf="parent"
         />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

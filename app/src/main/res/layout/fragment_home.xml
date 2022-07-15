@@ -201,6 +201,156 @@
         android:layout_marginStart="50px"
         />
 
+    <TextView
+        android:id="@+id/home_detail_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2022-07-10"
+        android:textSize="50px"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@id/home_detail_2_iv"
+        app:layout_constraintTop_toTopOf="@id/home_detail_2_iv"
+        android:layout_marginTop="70px"
+        android:layout_marginStart="30px"
+        />
+
+
+    <View
+        android:id="@+id/home_detail_line_2"
+        android:layout_width="390px"
+        android:layout_height="2px"
+        app:layout_constraintStart_toStartOf="@id/home_detail_date_tv"
+        app:layout_constraintTop_toBottomOf="@id/home_detail_date_tv"
+        android:layout_marginTop="40px"
+        android:background="#80000000"
+        />
+
+    <ImageView
+        android:id="@+id/home_kcal_ic"
+        android:layout_width="50px"
+        android:layout_height="50px"
+        android:src="@drawable/home_kcal"
+        app:layout_constraintStart_toStartOf="@id/home_detail_date_tv"
+        app:layout_constraintTop_toBottomOf="@id/home_detail_line_2"
+        android:layout_marginTop="40px"
+        />
+
+    <TextView
+        android:id="@+id/home_kcal_times_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="kcal"
+        android:textSize="40px"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/home_detail_2_iv"
+        app:layout_constraintTop_toTopOf="@id/home_kcal_ic"
+        android:layout_marginEnd="40px"
+        />
+
+    <TextView
+        android:id="@+id/home_kcal_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="127"
+        android:textSize="40px"
+        android:textStyle="normal"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/home_kcal_times_tv"
+        app:layout_constraintTop_toTopOf="@+id/home_kcal_ic"
+        android:layout_marginEnd="10px"
+        />
+
+    <ImageView
+        android:id="@+id/home_time_ic"
+        android:layout_width="50px"
+        android:layout_height="50px"
+        android:src="@drawable/home_time"
+        app:layout_constraintStart_toStartOf="@+id/home_detail_date_tv"
+        app:layout_constraintTop_toBottomOf="@id/home_kcal_ic"
+        android:layout_marginTop="40px"
+        />
+
+    <TextView
+        android:id="@+id/home_time_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="01 : 38"
+        android:textColor="@color/black"
+        android:textSize="40px"
+        app:layout_constraintEnd_toEndOf="@id/home_kcal_times_tv"
+        app:layout_constraintTop_toTopOf="@id/home_time_ic"
+        />
+
+    <ImageView
+        android:id="@+id/home_runningdst_ic"
+        android:layout_width="50px"
+        android:layout_height="50px"
+        android:src="@drawable/home_runningdst"
+        app:layout_constraintStart_toStartOf="@id/home_kcal_ic"
+        app:layout_constraintTop_toBottomOf="@id/home_time_ic"
+        android:layout_marginTop="40px"
+        />
+
+    <TextView
+        android:id="@+id/home_runningdst_times_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="m"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="40px"
+        app:layout_constraintEnd_toEndOf="@id/home_kcal_times_tv"
+        app:layout_constraintTop_toTopOf="@id/home_runningdst_ic"
+        />
+
+    <TextView
+        android:id="@+id/home_runningdst_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1596"
+        android:textSize="40px"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/home_runningdst_times_tv"
+        app:layout_constraintTop_toTopOf="@id/home_runningdst_ic"
+        android:layout_marginEnd="10px"
+        />
+
+    <ImageView
+        android:id="@+id/home_didim_ic"
+        android:layout_width="50px"
+        android:layout_height="50px"
+        android:src="@drawable/home_didim"
+        app:layout_constraintStart_toStartOf="@id/home_detail_date_tv"
+        app:layout_constraintTop_toBottomOf="@id/home_runningdst_ic"
+        android:layout_marginTop="40px"
+        />
+
+    <TextView
+        android:id="@+id/home_didim_times_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="걸음"
+        android:textColor="@color/black"
+        android:textSize="38px"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/home_kcal_times_tv"
+        app:layout_constraintTop_toTopOf="@id/home_didim_ic"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="18469"
+        android:textSize="40px"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/home_didim_times_tv"
+        app:layout_constraintTop_toTopOf="@id/home_didim_ic"
+        android:layout_marginEnd="10px"
+        />
+
+
     <ImageView
         android:id="@+id/home_tutorial_bg_iv"
         android:layout_width="wrap_content"

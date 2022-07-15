@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/detail_tab_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/detail_tabindicator.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/detail_tabindicator_bg.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/home_circle.xml" value="0.3287037037037037" />
         <entry key="app/src/main/res/drawable/home_tutorial_bg.xml" value="0.3287037037037037" />
         <entry key="app/src/main/res/drawable/ic_foot.xml" value="0.1" />
@@ -13,10 +16,13 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3223958333333333" />
         <entry key="app/src/main/res/layout/activity_spalsh.xml" value="0.15678824721377912" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.3223958333333333" />
-        <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.3223958333333333" />
+        <entry key="app/src/main/res/layout/fragment_day.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_foot.xml" value="0.3223958333333333" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3750470129397342" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3524594011942412" />
+        <entry key="app/src/main/res/layout/fragment_month.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_tutorial_2.xml" value="0.15678824721377912" />
+        <entry key="app/src/main/res/layout/fragment_week.xml" value="0.1" />
         <entry key="app/src/main/res/menu/item_menu.xml" value="0.3223958333333333" />
       </map>
     </option>
