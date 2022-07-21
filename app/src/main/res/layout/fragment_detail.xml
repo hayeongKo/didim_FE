@@ -12,9 +12,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="200px"
+        app:tabSelectedTextColor="@color/detail_tabindicator"
         app:tabIndicator="@color/transpoart"
         app:tabIndicatorFullWidth="false"
+        app:tabRippleColor="@color/transpoart"
         app:tabTextAppearance="@style/tab_text"
+        app:tabTextColor="@color/black"
         app:tabBackground="@drawable/detail_tab_background"
         />
 

@@ -154,4 +154,14 @@
         android:visibility="gone"
         />
 
+    <Button
+        android:id="@+id/foot_date_bt"
+        android:layout_width="300px"
+        android:layout_height="300px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="data 받아오기"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

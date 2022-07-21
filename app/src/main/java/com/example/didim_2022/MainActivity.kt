@@ -1,5 +1,6 @@
 package com.example.didim_2022
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -33,14 +34,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-//        //activity --> tutorial
-//        tutorialbtn.setOnClickListener {
-//            supportFragmentManager
-//                .beginTransaction()
-//                .add(R.id.main_container, Tutorial2Fragment())
-//                .commit()
-//        }
 
         //bottomnavigation
         supportFragmentManager.beginTransaction().add(frame.id, HomeFragment()).commit()
