@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.didim_2022.MainActivity
+import com.example.didim_2022.ui.MainActivity
 import com.example.didim_2022.databinding.FragmentTutorial5Binding
 
 class Tutorial5Fragment: Fragment(){

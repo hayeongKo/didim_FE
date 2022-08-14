@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <stroke android:color="@color/tutorial_circle" android:width="7px"/>
     <gradient
-        android:gradientRadius="60%"
+        android:startColor="#99FF0000"
         android:type="radial"
-        android:startColor="#88FF0000"
+        android:gradientRadius="70%"
         />
     <size android:width="150px" android:height="150px"/>
 </shape>

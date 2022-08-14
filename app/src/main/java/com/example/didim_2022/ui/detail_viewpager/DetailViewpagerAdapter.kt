@@ -2,8 +2,7 @@ package com.example.didim_2022.ui.detail_viewpager
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.didim_2022.DetailFragment
-import com.example.didim_2022.HomeFragment
+import com.example.didim_2022.ui.DetailFragment
 
 class DetailViewpagerAdapter (fragment: Fragment): FragmentStateAdapter(fragment) {
 

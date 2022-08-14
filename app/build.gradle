@@ -11,6 +11,8 @@ android {
 //        enabled = true
 //    }
 
+
+
     defaultConfig {
         applicationId "com.example.didim_2022"
         minSdk 21
@@ -19,6 +21,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {

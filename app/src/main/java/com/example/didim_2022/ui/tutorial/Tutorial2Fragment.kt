@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import com.example.didim_2022.MainActivity
-import com.example.didim_2022.R
+import com.example.didim_2022.ui.MainActivity
 import com.example.didim_2022.databinding.FragmentTutorial2Binding
 
 class Tutorial2Fragment: Fragment() {

@@ -14,23 +14,9 @@
         android:src="@drawable/tutorial_foot"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.488" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="650px"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tutorial_foot_iv"
-        android:layout_marginTop="100px"
-        android:text="왼발의 뒷꿈치부터 순서에 따라 천천히 땅을 밟아보세요."
-        android:textSize="50px"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:textColor="@color/black"/>
 
     <ImageView
         android:id="@+id/foot_left_circle_1_iv"
@@ -51,7 +37,7 @@
         app:layout_constraintTop_toTopOf="@id/tutorial_foot_iv"
         android:layout_marginLeft="50px"
         android:layout_marginTop="330px"
-        android:src="@drawable/tutorial_circle_checked"
+        android:src="@drawable/tutorial_circle_checked_2"
         />
 
     <ImageView

@@ -18,31 +18,30 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_width="800px"
+        android:layout_width="700px"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tutorial_foot_iv"
         android:layout_marginTop="150px"
-        android:text="다음과 같은 순서로 올바르게 걷는다면, 당신은                                  입니다."
+        android:text="발 앞쪽에 힘이 들어간다면,"
         android:textSize="50px"
         android:textAlignment="center"
         android:textStyle="bold"
         android:textColor="@color/black"/>
 
     <TextView
-        android:layout_width="800px"
+        android:layout_width="650px"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tutorial_foot_iv"
-        android:layout_marginTop="200px"
-        android:text="PERFECT"
+        android:layout_marginTop="220px"
+        android:text="바른 걸음!"
         android:textSize="80px"
         android:textAlignment="center"
         android:textStyle="bold"
         android:textColor="@color/home_combo_perfect"/>
-
 
     <ImageView
         android:id="@+id/foot_left_circle_1_iv"
@@ -50,9 +49,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/tutorial_foot_iv"
         app:layout_constraintTop_toTopOf="@id/tutorial_foot_iv"
-        android:layout_marginLeft="120px"
-        android:layout_marginTop="50px"
-        android:src="@drawable/tutorial_circle_default"
+        android:layout_marginStart="200px"
+        android:src="@drawable/follow_circle"
         />
 
     <ImageView
@@ -61,9 +59,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/tutorial_foot_iv"
         app:layout_constraintTop_toTopOf="@id/tutorial_foot_iv"
-        android:layout_marginLeft="50px"
-        android:layout_marginTop="330px"
-        android:src="@drawable/tutorial_circle_default"
+        android:layout_marginStart="220px"
+        android:layout_marginTop="150px"
+        android:src="@drawable/follow_circle_default"
         />
 
     <ImageView
@@ -72,48 +70,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/tutorial_foot_iv"
         app:layout_constraintTop_toTopOf="@id/tutorial_foot_iv"
-        android:layout_marginLeft="200px"
-        android:layout_marginTop="580px"
-        android:src="@drawable/tutorial_circle_default"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3"
-        app:layout_constraintStart_toStartOf="@id/foot_left_circle_1_iv"
-        app:layout_constraintEnd_toEndOf="@id/foot_left_circle_1_iv"
-        app:layout_constraintTop_toTopOf="@id/foot_left_circle_1_iv"
-        app:layout_constraintBottom_toBottomOf="@id/foot_left_circle_1_iv"
-        android:textColor="@color/tutorial_circle"
-        android:textSize="80px"
-        android:textStyle="bold"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2"
-        app:layout_constraintStart_toStartOf="@id/foot_left_circle_2_iv"
-        app:layout_constraintEnd_toEndOf="@id/foot_left_circle_2_iv"
-        app:layout_constraintTop_toTopOf="@id/foot_left_circle_2_iv"
-        app:layout_constraintBottom_toBottomOf="@id/foot_left_circle_2_iv"
-        android:textColor="@color/tutorial_circle"
-        android:textSize="80px"
-        android:textStyle="bold"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1"
-        app:layout_constraintStart_toStartOf="@id/foot_left_circle_3_iv"
-        app:layout_constraintEnd_toEndOf="@id/foot_left_circle_3_iv"
-        app:layout_constraintTop_toTopOf="@id/foot_left_circle_3_iv"
-        app:layout_constraintBottom_toBottomOf="@id/foot_left_circle_3_iv"
-        android:textColor="@color/tutorial_circle"
-        android:textSize="80px"
-        android:textStyle="bold"
+        android:layout_marginTop="250px"
+        android:layout_marginStart="50px"
+        android:src="@drawable/follow_circle_default"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

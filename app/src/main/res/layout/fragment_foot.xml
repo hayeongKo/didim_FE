@@ -17,37 +17,14 @@
         />
 
     <ImageView
-        android:id="@+id/foot_left_circle_1_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/foot_iv"
-        app:layout_constraintTop_toTopOf="@id/foot_iv"
-        android:layout_marginLeft="120px"
-        android:layout_marginTop="50px"
-        android:src="@drawable/tutorial_circle_default"
-        />
-
-    <ImageView
         android:id="@+id/foot_left_circle_checked_1_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/foot_iv"
         app:layout_constraintTop_toTopOf="@id/foot_iv"
-        android:layout_marginLeft="120px"
-        android:layout_marginTop="50px"
+        android:layout_marginLeft="200px"
         android:src="@drawable/tutorial_circle_checked"
         android:visibility="gone"
-        />
-
-    <ImageView
-        android:id="@+id/foot_left_circle_2_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/foot_iv"
-        app:layout_constraintTop_toTopOf="@id/foot_iv"
-        android:layout_marginLeft="50px"
-        android:layout_marginTop="330px"
-        android:src="@drawable/tutorial_circle_default"
         />
 
     <ImageView
@@ -55,22 +32,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/foot_iv"
-        app:layout_constraintTop_toTopOf="@id/foot_iv"
-        android:layout_marginLeft="50px"
-        android:layout_marginTop="330px"
+        app:layout_constraintTop_toBottomOf="@id/foot_left_circle_checked_1_iv"
+        android:layout_marginLeft="220px"
         android:src="@drawable/tutorial_circle_checked"
         android:visibility="gone"
-        />
-
-    <ImageView
-        android:id="@+id/foot_left_circle_3_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/foot_iv"
-        app:layout_constraintTop_toTopOf="@id/foot_iv"
-        android:layout_marginLeft="200px"
-        android:layout_marginTop="580px"
-        android:src="@drawable/tutorial_circle_default"
         />
 
     <ImageView
@@ -78,22 +43,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/foot_iv"
-        app:layout_constraintTop_toTopOf="@id/foot_iv"
-        android:layout_marginLeft="200px"
-        android:layout_marginTop="580px"
+        app:layout_constraintTop_toTopOf="@id/foot_left_circle_checked_2_iv"
+        android:layout_marginTop="20px"
+        android:layout_marginLeft="110px"
         android:src="@drawable/tutorial_circle_checked"
         android:visibility="gone"
         />
 
     <ImageView
-        android:id="@+id/foot_right_circle_1_iv"
+        android:id="@+id/foot_left_circle_checked_4_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/foot_iv"
+        app:layout_constraintStart_toStartOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_left_circle_checked_2_iv"
+        android:layout_marginTop="60px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/foot_left_circle_checked_5_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/foot_iv"
         app:layout_constraintTop_toTopOf="@id/foot_iv"
-        android:layout_marginTop="220px"
-        android:layout_marginEnd="100px"
-        android:src="@drawable/tutorial_circle_default"
+        android:layout_marginTop="430px"
+        android:layout_marginLeft="130px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/foot_left_circle_checked_6_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginTop="600px"
+        android:layout_marginLeft="240px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
         />
 
     <ImageView
@@ -102,21 +91,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@id/foot_iv"
         app:layout_constraintTop_toTopOf="@id/foot_iv"
-        android:layout_marginTop="220px"
-        android:layout_marginEnd="100px"
+        android:layout_marginRight="190px"
+        android:layout_marginTop="130px"
         android:src="@drawable/tutorial_circle_checked"
         android:visibility="gone"
-        />
-
-    <ImageView
-        android:id="@+id/foot_right_circle_2_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/foot_iv"
-        app:layout_constraintTop_toTopOf="@id/foot_iv"
-        android:layout_marginTop="500px"
-        android:layout_marginEnd="90px"
-        android:src="@drawable/tutorial_circle_default"
         />
 
     <ImageView
@@ -125,21 +103,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@id/foot_iv"
         app:layout_constraintTop_toTopOf="@id/foot_iv"
-        android:layout_marginTop="500px"
-        android:layout_marginEnd="90px"
+        android:layout_marginTop="280px"
+        android:layout_marginRight="220px"
         android:src="@drawable/tutorial_circle_checked"
         android:visibility="gone"
-        />
-
-    <ImageView
-        android:id="@+id/foot_right_circle_3_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/foot_iv"
-        app:layout_constraintTop_toTopOf="@id/foot_iv"
-        android:layout_marginTop="740px"
-        android:layout_marginEnd="230px"
-        android:src="@drawable/tutorial_circle_default"
         />
 
     <ImageView
@@ -148,8 +115,44 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@id/foot_iv"
         app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginTop="320px"
+        android:layout_marginRight="120px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/foot_right_circle_checked_4_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginTop="350px"
+        android:layout_marginRight="30px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/foot_right_circle_checked_5_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginTop="580px"
+        android:layout_marginRight="150px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/foot_right_circle_checked_6_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
         android:layout_marginTop="740px"
-        android:layout_marginEnd="230px"
+        android:layout_marginRight="270px"
         android:src="@drawable/tutorial_circle_checked"
         android:visibility="gone"
         />

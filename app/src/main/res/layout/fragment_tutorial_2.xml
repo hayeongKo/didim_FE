@@ -6,6 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="걸을 때 하중 받는 발의 순서"
+        android:textColor="@color/home_combo_perfect"
+        android:textSize="70px"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tutorial_foot_iv"
+        android:layout_marginBottom="180px"
+        />
+
     <ImageView
         android:id="@+id/tutorial_foot_iv"
         android:layout_width="wrap_content"
@@ -23,8 +36,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tutorial_foot_iv"
-        android:layout_marginTop="100px"
-        android:text="왼발의 뒷꿈치부터 순서에 따라 천천히 땅을 밟아보세요."
+        android:layout_marginTop="150px"
+        android:text="걸을 때 바른 순서에 대해 알아보겠습니다."
         android:textSize="50px"
         android:textAlignment="center"
         android:textStyle="bold"
@@ -60,7 +73,7 @@
         app:layout_constraintTop_toTopOf="@id/tutorial_foot_iv"
         android:layout_marginLeft="200px"
         android:layout_marginTop="580px"
-        android:src="@drawable/tutorial_circle_checked"
+        android:src="@drawable/tutorial_circle_checked_2"
         />
 
     <TextView

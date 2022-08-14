@@ -6,22 +6,40 @@
         <entry key="app/src/main/res/drawable/detail_tab_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/detail_tabindicator.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/detail_tabindicator_bg.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/detail_tabindicator_checked.xml" value="0.2708333333333333" />
+        <entry key="app/src/main/res/drawable/detail_tabindicator_default.xml" value="0.26666666666666666" />
+        <entry key="app/src/main/res/drawable/follow_circle.xml" value="0.26927083333333335" />
+        <entry key="app/src/main/res/drawable/follow_circle_default.xml" value="0.26927083333333335" />
         <entry key="app/src/main/res/drawable/home_circle.xml" value="0.3287037037037037" />
         <entry key="app/src/main/res/drawable/home_tutorial_bg.xml" value="0.3287037037037037" />
+        <entry key="app/src/main/res/drawable/ic_baseline_accessibility_24.xml" value="0.26927083333333335" />
+        <entry key="app/src/main/res/drawable/ic_follow.xml" value="0.26927083333333335" />
         <entry key="app/src/main/res/drawable/ic_foot.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.26666666666666666" />
         <entry key="app/src/main/res/drawable/item_home_selector.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/item_selector.xml" value="0.3287037037037037" />
         <entry key="app/src/main/res/drawable/tutorial_circle_checked.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/tutorial_circle_checked_2.xml" value="0.2708333333333333" />
         <entry key="app/src/main/res/drawable/tutorial_circle_default.xml" value="0.3287037037037037" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.11494252873563218" />
         <entry key="app/src/main/res/layout/activity_spalsh.xml" value="0.15678824721377912" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.3223958333333333" />
         <entry key="app/src/main/res/layout/fragment_day.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_foot.xml" value="0.6548801344568387" />
+        <entry key="app/src/main/res/layout/fragment_foot.xml" value="0.24882091876443893" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3524594011942412" />
         <entry key="app/src/main/res/layout/fragment_month.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_tutorial_2.xml" value="0.15678824721377912" />
+        <entry key="app/src/main/res/layout/fragment_tutorial_10.xml" value="0.2515625" />
+        <entry key="app/src/main/res/layout/fragment_tutorial_11.xml" value="0.2515625" />
+        <entry key="app/src/main/res/layout/fragment_tutorial_12.xml" value="0.2515625" />
+        <entry key="app/src/main/res/layout/fragment_tutorial_13.xml" value="0.2515625" />
+        <entry key="app/src/main/res/layout/fragment_tutorial_2.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_tutorial_3.xml" value="0.25625" />
+        <entry key="app/src/main/res/layout/fragment_tutorial_4.xml" value="0.25625" />
+        <entry key="app/src/main/res/layout/fragment_tutorial_5.xml" value="0.25625" />
+        <entry key="app/src/main/res/layout/fragment_tutorial_6.xml" value="0.253125" />
+        <entry key="app/src/main/res/layout/fragment_tutorial_7.xml" value="0.253125" />
+        <entry key="app/src/main/res/layout/fragment_tutorial_9.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/fragment_week.xml" value="0.1" />
         <entry key="app/src/main/res/menu/item_menu.xml" value="0.3223958333333333" />
       </map>
