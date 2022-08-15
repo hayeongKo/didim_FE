@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/item_menu"
-        app:itemIconSize="50px"
+        app:itemIconSize="60px"
         app:labelVisibilityMode="labeled"
         app:itemIconTint="@color/black"
         />

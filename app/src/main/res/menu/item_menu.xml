@@ -3,7 +3,7 @@
     <item
         android:id="@+id/nav_foot"
         android:title="Foot"
-        android:icon="@drawable/foot"
+        android:icon="@drawable/follow_foot"
         />
 
     <item
@@ -17,7 +17,5 @@
         android:title="Detail"
         android:icon="@drawable/statics"
         />
-
-
 
 </menu>
