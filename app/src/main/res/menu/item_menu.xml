@@ -3,19 +3,19 @@
     <item
         android:id="@+id/nav_foot"
         android:title="Foot"
-        android:icon="@drawable/ic_baseline_accessibility_24"
+        android:icon="@drawable/foot"
         />
 
     <item
         android:id="@+id/nav_home"
         android:title="Home"
-        android:icon="@drawable/ic_baseline_home_24"
+        android:icon="@drawable/home"
         />
 
     <item
         android:id="@+id/nav_detail"
         android:title="Detail"
-        android:icon="@drawable/ic_baseline_apps_24"
+        android:icon="@drawable/statics"
         />
 
 
