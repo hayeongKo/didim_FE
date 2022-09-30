@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import app.akexorcist.bluetotohspp.library.BluetoothSPP
 import com.example.didim_2022.R
 import com.example.didim_2022.databinding.FragmentHomeBinding
 import com.example.didim_2022.ui.tutorial.Tutorial2Fragment

@@ -21,12 +21,14 @@
         <entry key="app/src/main/res/drawable/tutorial_circle_checked.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/tutorial_circle_checked_2.xml" value="0.2708333333333333" />
         <entry key="app/src/main/res/drawable/tutorial_circle_default.xml" value="0.3287037037037037" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.4695945548573135" />
+        <entry key="app/src/main/res/layout/activity_foot.xml" value="0.27149122807017545" />
+        <entry key="app/src/main/res/layout/activity_hello.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.10077519379844961" />
         <entry key="app/src/main/res/layout/activity_spalsh.xml" value="0.15678824721377912" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.3223958333333333" />
         <entry key="app/src/main/res/layout/fragment_day.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_foot.xml" value="0.24882091876443893" />
+        <entry key="app/src/main/res/layout/fragment_foot.xml" value="0.19047619047619047" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2868421052631579" />
         <entry key="app/src/main/res/layout/fragment_month.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_tutorial_10.xml" value="0.2515625" />
@@ -41,11 +43,15 @@
         <entry key="app/src/main/res/layout/fragment_tutorial_7.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/fragment_tutorial_9.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/fragment_week.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/hello.xml" value="0.21965579710144928" />
         <entry key="app/src/main/res/menu/item_menu.xml" value="0.3223958333333333" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

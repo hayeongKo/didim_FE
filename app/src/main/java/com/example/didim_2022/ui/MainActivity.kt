@@ -1,14 +1,16 @@
 package com.example.didim_2022.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
+import android.util.Log
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.example.didim_2022.R
 import com.example.didim_2022.databinding.ActivityMainBinding
 import com.example.didim_2022.ui.tutorial.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,9 +32,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //sensor
-
-
         //bottomnavigation
         supportFragmentManager.beginTransaction().add(frame.id, HomeFragment()).commit()
 
@@ -41,14 +40,19 @@ class MainActivity : AppCompatActivity() {
         bottomNagivationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {
+                    Log.d("nav", "onCreate: toHome")
                     replaceFragment(HomeFragment())
                     true
                 }
                 R.id.nav_foot -> {
-                    replaceFragment(FootFragment())
+                    Log.d("nav", "onCreate: toFoot")
+                    val intent = Intent(this, FootActivity::class.java)
+                    startActivity(intent)
+                    //Log.d("foot_activity_success", "onCreate: 넘아가마ㅏㅏ")
                     true
                 }
                 R.id.nav_detail -> {
+                    Log.d("nav", "onCreate: toDetail")
                     replaceFragment(DetailFragment())
                     true
                 }
@@ -56,24 +60,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        //php url 연결
+        binding.tofootbtn.setOnClickListener {
+            val intent = Intent(this, FootActivity2::class.java)
+            startActivity(intent)
+        }
 
-//        val test = "http://localhost/MediumServer/SelectAllPost.php";
-//        val task = URLConnector(test);
-//
-//        task.start();
-//
-//        try{
-//            task.join();
-//            System.out.println("waiting... for result");
-//        }
-//        catch(InterruptedException e){
-//
-//        }
-//
-//        val result = task.getResult();
-//
-//        System.out.println(result);
 
     }
 
@@ -81,8 +72,8 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().replace(frame.id, fragment).commit()
     }
 
-    fun changeFragment(index: Int){
-        when(index){
+    fun changeFragment(index: Int) {
+        when (index) {
             0 -> {
                 supportFragmentManager
                     .beginTransaction()
@@ -174,4 +165,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
 }
