@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+
     private val frame: ConstraintLayout by lazy {
         findViewById(R.id.main_container)
     }

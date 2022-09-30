@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.*
-import android.widget.AdapterView.OnItemClickListener
 import androidx.appcompat.app.AppCompatActivity
 import com.example.didim_2022.R
 import com.example.didim_2022.databinding.ActivityFootBinding
@@ -25,7 +24,11 @@ import android.os.Build
 import androidx.core.app.ActivityCompat
 
 import android.content.pm.PackageManager
+import android.opengl.Visibility
 import android.util.Log
+import android.widget.AdapterView.*
+import androidx.core.os.trace
+import androidx.fragment.app.Fragment
 
 
 class FootActivity2: AppCompatActivity() {
@@ -47,7 +50,9 @@ class FootActivity2: AppCompatActivity() {
     var bufferPosition : Int = 0
 
     lateinit var item : ArrayList<String>
-    lateinit var receiveValue : List<String>
+    lateinit var receiveValue : Array<String>
+
+    private val sharedManager : SharedManager by lazy { SharedManager(this) }
 
     private lateinit var binding: ActivityFootBinding
 
@@ -112,7 +117,6 @@ class FootActivity2: AppCompatActivity() {
                 findViewById<View>(R.id.listview).visibility = View.INVISIBLE
             }
 
-
     }
 
 
@@ -141,7 +145,7 @@ class FootActivity2: AppCompatActivity() {
                                     handler.post(Runnable {
                                         fun run() {
                                             receiveData!!.setText(data)
-                                            receiveValue = data.split(",")
+                                            receiveValue = data.split(",").toTypedArray()
                                         }
                                     })
                                 } else {
@@ -215,8 +219,42 @@ class FootActivity2: AppCompatActivity() {
 
         receiveData = findViewById(R.id.receiveData)
 
+
         checkPermissions()
         activateBluetooth()
+        //setPeakLeft(receiveData[3].toInt())
+        //setPeakRight(receiveData[4].toInt())
+        //sharedpreference
+        val currentSensor = Sensor().apply {
+            count += receiveValue[0].toInt()
+            when(receiveValue[1]){
+                "0" -> {
+                    miss += 1
+                    score = "miss"
+                }
+                "1" -> {
+                    bad += 1
+                    score = "bad"
+                }
+                "2" -> {
+                    good += 1
+                    score = "good"
+                }
+                "3" -> {
+                    perfect += 1
+                    score = "perfect"
+                }
+            }
+            when(receiveValue[2]){
+                "1" -> ajudge = "바른 걸음"
+                "2" -> ajudge = "팔자 걸음"
+                "3" -> ajudge = "안짱 걸음"
+                else -> ajudge = "이전과 똑같이 걷고 있어"
+            }
+        }
+        sharedManager.saveCurrentSensor(currentSensor)
+
+        finish()
     }
 
     private val PERMISSIONS_STORAGE = arrayOf(
@@ -257,6 +295,106 @@ class FootActivity2: AppCompatActivity() {
                 1
             )
         }
+    }
+
+    fun setPeakLeft(int : Int) {
+        when(int) {
+            1 -> {
+                binding.footLeftCircleChecked1Iv.visibility = VISIBLE
+                binding.footLeftCircleChecked2Iv.visibility = GONE
+                binding.footLeftCircleChecked3Iv.visibility = GONE
+                binding.footLeftCircleChecked4Iv.visibility = GONE
+                binding.footLeftCircleChecked6Iv.visibility = GONE
+            }
+            2 -> {
+                binding.footLeftCircleChecked1Iv.visibility = GONE
+                binding.footLeftCircleChecked2Iv.visibility = VISIBLE
+                binding.footLeftCircleChecked3Iv.visibility = GONE
+                binding.footLeftCircleChecked4Iv.visibility = GONE
+                binding.footLeftCircleChecked6Iv.visibility = GONE
+            }
+            4-> {
+                binding.footLeftCircleChecked1Iv.visibility = GONE
+                binding.footLeftCircleChecked2Iv.visibility = GONE
+                binding.footLeftCircleChecked3Iv.visibility = VISIBLE
+                binding.footLeftCircleChecked4Iv.visibility = GONE
+                binding.footLeftCircleChecked6Iv.visibility = GONE
+            }
+            5 -> {
+                binding.footLeftCircleChecked1Iv.visibility = GONE
+                binding.footLeftCircleChecked2Iv.visibility = GONE
+                binding.footLeftCircleChecked3Iv.visibility = GONE
+                binding.footLeftCircleChecked4Iv.visibility = VISIBLE
+                binding.footLeftCircleChecked6Iv.visibility = GONE
+            }
+            6 -> {
+                binding.footLeftCircleChecked1Iv.visibility = GONE
+                binding.footLeftCircleChecked2Iv.visibility = GONE
+                binding.footLeftCircleChecked3Iv.visibility = GONE
+                binding.footLeftCircleChecked4Iv.visibility = GONE
+                binding.footLeftCircleChecked6Iv.visibility = VISIBLE
+            }
+        }
+    }
+
+    fun setPeakRight(int : Int) {
+        when(int) {
+            1 -> {
+                binding.footRightCircleChecked1Iv.visibility = VISIBLE
+                binding.footRightCircleChecked2Iv.visibility = GONE
+                binding.footRightCircleChecked3Iv.visibility = GONE
+                binding.footRightCircleChecked4Iv.visibility = GONE
+                binding.footRightCircleChecked6Iv.visibility = GONE
+            }
+            2 -> {
+                binding.footRightCircleChecked1Iv.visibility = GONE
+                binding.footRightCircleChecked2Iv.visibility = VISIBLE
+                binding.footRightCircleChecked3Iv.visibility = GONE
+                binding.footRightCircleChecked4Iv.visibility = GONE
+                binding.footRightCircleChecked6Iv.visibility = GONE
+            }
+            4-> {
+                binding.footRightCircleChecked1Iv.visibility = GONE
+                binding.footRightCircleChecked2Iv.visibility = GONE
+                binding.footRightCircleChecked3Iv.visibility = VISIBLE
+                binding.footRightCircleChecked4Iv.visibility = GONE
+                binding.footRightCircleChecked6Iv.visibility = GONE
+            }
+            5 -> {
+                binding.footRightCircleChecked1Iv.visibility = GONE
+                binding.footRightCircleChecked2Iv.visibility = GONE
+                binding.footRightCircleChecked3Iv.visibility = GONE
+                binding.footRightCircleChecked4Iv.visibility = VISIBLE
+                binding.footRightCircleChecked6Iv.visibility = GONE
+            }
+            6 -> {
+                binding.footRightCircleChecked1Iv.visibility = GONE
+                binding.footRightCircleChecked2Iv.visibility = GONE
+                binding.footRightCircleChecked3Iv.visibility = GONE
+                binding.footRightCircleChecked4Iv.visibility = GONE
+                binding.footRightCircleChecked6Iv.visibility = VISIBLE
+            }
+        }
+    }
+
+    fun setDataAtFragment(fragment: Fragment) {
+        val currentSensor = sharedManager.getCurrentSensor()
+        val bundle = Bundle()
+        bundle.putInt("count", currentSensor.count)
+        bundle.putString("score", currentSensor.score)
+        bundle.putString("ajudge", currentSensor.ajudge)
+        bundle.putInt("miss", currentSensor.miss)
+        bundle.putInt("bad", currentSensor.bad)
+        bundle.putInt("good", currentSensor.good)
+        bundle.putInt("perfect", currentSensor.perfect)
+
+        fragment.arguments = bundle
+        setFragment(fragment)
+    }
+    fun setFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager. beginTransaction()
+        transaction.replace(R.id.FragmentHome, fragment)
+        transaction.commit()
     }
 
 

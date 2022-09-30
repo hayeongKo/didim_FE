@@ -40,17 +40,17 @@
             android:visibility="gone"
             />
 
-    <ImageView
-            android:id="@+id/foot_left_circle_checked_3_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/foot_iv"
-            app:layout_constraintTop_toTopOf="@id/foot_left_circle_checked_2_iv"
-            android:layout_marginTop="20px"
-            android:layout_marginLeft="110px"
-            android:src="@drawable/tutorial_circle_checked"
-            android:visibility="gone"
-            />
+<!--    <ImageView-->
+<!--            android:id="@+id/foot_left_circle_checked_3_iv"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="@id/foot_iv"-->
+<!--            app:layout_constraintTop_toTopOf="@id/foot_left_circle_checked_2_iv"-->
+<!--            android:layout_marginTop="20px"-->
+<!--            android:layout_marginLeft="110px"-->
+<!--            android:src="@drawable/tutorial_circle_checked"-->
+<!--            android:visibility="gone"-->
+<!--            />-->
 
     <ImageView
             android:id="@+id/foot_left_circle_checked_4_iv"
@@ -111,17 +111,17 @@
             android:visibility="gone"
             />
 
-    <ImageView
-            android:id="@+id/foot_right_circle_checked_3_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/foot_iv"
-            app:layout_constraintTop_toTopOf="@id/foot_iv"
-            android:layout_marginTop="320px"
-            android:layout_marginRight="120px"
-            android:src="@drawable/tutorial_circle_checked"
-            android:visibility="gone"
-            />
+<!--    <ImageView-->
+<!--            android:id="@+id/foot_right_circle_checked_3_iv"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintEnd_toEndOf="@id/foot_iv"-->
+<!--            app:layout_constraintTop_toTopOf="@id/foot_iv"-->
+<!--            android:layout_marginTop="320px"-->
+<!--            android:layout_marginRight="120px"-->
+<!--            android:src="@drawable/tutorial_circle_checked"-->
+<!--            android:visibility="gone"-->
+<!--            />-->
 
     <ImageView
             android:id="@+id/foot_right_circle_checked_4_iv"
