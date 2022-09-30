@@ -60,12 +60,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.tofootbtn.setOnClickListener {
-            val intent = Intent(this, FootActivity2::class.java)
-            startActivity(intent)
-        }
-
-
     }
 
     fun replaceFragment(fragment: Fragment) {

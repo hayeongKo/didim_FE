@@ -89,7 +89,7 @@ public class FootActivity extends AppCompatActivity {
         }
 
 
-        final List<String> listDevices = new ArrayList<String>();
+        final List<String> listDevices = new ArrayList<>();
         for (BluetoothDevice device : pairedDevices) {
             listDevices.add(device.getName());
         }
@@ -163,18 +163,18 @@ public class FootActivity extends AppCompatActivity {
 
         mWorkerThread.start();
     }
-
-    void transmitData(String msg) {
-        msg += "\n";
-
-        try {
-
-            mOutputStream.write(msg.getBytes());        // 문자열 전송
-        } catch (Exception e) {
-            // 오류가 발생한 경우
-            finish();        // 액티비티 종료
-        }
-    }
+//
+//    void transmitData(String msg) {
+//        msg += "\n";
+//
+//        try {
+//
+//            mOutputStream.write(msg.getBytes());        // 문자열 전송
+//        } catch (Exception e) {
+//            // 오류가 발생한 경우
+//            finish();        // 액티비티 종료
+//        }
+//    }
 
     BluetoothDevice getDeviceFromBondedList(String name) {
         BluetoothDevice selectedDevice = null;

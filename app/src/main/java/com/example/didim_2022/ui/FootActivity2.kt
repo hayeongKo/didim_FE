@@ -1,5 +1,6 @@
 package com.example.didim_2022.ui
 
+import android.Manifest
 import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
@@ -20,6 +21,12 @@ import java.lang.Exception
 import java.nio.charset.Charset
 import java.util.*
 import kotlin.collections.ArrayList
+import android.os.Build
+import androidx.core.app.ActivityCompat
+
+import android.content.pm.PackageManager
+import android.util.Log
+
 
 class FootActivity2: AppCompatActivity() {
 
@@ -27,17 +34,20 @@ class FootActivity2: AppCompatActivity() {
     var connecting = false
 
     val REQUEST_ENABLE_BT : Int = 10
-    var mBluetoothAdapter : BluetoothAdapter? = null
+    lateinit var mBluetoothAdapter : BluetoothAdapter
     var mPairedDeviceCount : Int = 0
-    var pairedDevices : Set<BluetoothDevice>? = null
-    var mRemoteDevice : BluetoothDevice? = null
+    lateinit var pairedDevices : Set<BluetoothDevice>
+    lateinit var mRemoteDevice : BluetoothDevice
     var mSocket: BluetoothSocket? = null
     var mOutputStream: OutputStream? = null
     var mInputStream: InputStream? = null
-    var mWorkerThread: Thread = Thread()
+    lateinit var mWorkerThread: Thread
 
-    var readBuffer : ByteArray? = null
+    lateinit var readBuffer : ByteArray
     var bufferPosition : Int = 0
+
+    lateinit var item : ArrayList<String>
+    lateinit var receiveValue : List<String>
 
     private lateinit var binding: ActivityFootBinding
 
@@ -87,12 +97,15 @@ class FootActivity2: AppCompatActivity() {
         val listView = findViewById<ListView>(R.id.listview)
         listView.adapter = mAdapter
 
-        val items = listDevices.toTypedArray()
+        item = ArrayList(listDevices.size)
+        var items = listDevices.toArray(item.toArray())
+
+        Log.d("itemValue", "selectPairedDevice: " + items)
 
         listView.onItemClickListener =
             OnItemClickListener { parent, view, position, id ->
                 if (connecting == false) {
-                    connectToBluetoothDevice(items[position])
+                    connectToBluetoothDevice(items[position] as String)
                 }
                 connecting = true
                 findViewById<View>(R.id.selectBT).visibility = View.INVISIBLE
@@ -102,8 +115,9 @@ class FootActivity2: AppCompatActivity() {
 
     }
 
+
     fun receiveData() {
-        val handler : Handler = Handler()
+        val handler = Handler()
         readBuffer = ByteArray(1024)
         bufferPosition = 0
 
@@ -114,7 +128,7 @@ class FootActivity2: AppCompatActivity() {
                         val bytesAvailable : Int = mInputStream!!.available()
 
                         if (bytesAvailable > 0) {
-                            var packetBytes : ByteArray = ByteArray(bytesAvailable)
+                            var packetBytes = ByteArray(bytesAvailable)
                             mInputStream!!.read(packetBytes)
 
                             var i = 0
@@ -127,6 +141,7 @@ class FootActivity2: AppCompatActivity() {
                                     handler.post(Runnable {
                                         fun run() {
                                             receiveData!!.setText(data)
+                                            receiveValue = data.split(",")
                                         }
                                     })
                                 } else {
@@ -145,16 +160,7 @@ class FootActivity2: AppCompatActivity() {
         mWorkerThread.start()
     }
 
-    fun transmitData(msg: String) {
-        var msg = msg
-        msg += "\n"
-        try {
-            mOutputStream!!.write(msg.toByteArray()) // 문자열 전송
-        } catch (e: Exception) {
-            // 오류가 발생한 경우
-            finish() // 액티비티 종료
-        }
-    }
+
 
     fun getDeviceFromBondedList(name: String): BluetoothDevice? {
         var selectedDevice: BluetoothDevice? = null
@@ -170,7 +176,7 @@ class FootActivity2: AppCompatActivity() {
     }
 
     @Override
-    protected override fun onDestroy() {
+    override fun onDestroy() {
         try {
             mWorkerThread.interrupt()
             mInputStream?.close()
@@ -183,7 +189,7 @@ class FootActivity2: AppCompatActivity() {
     }
 
     fun connectToBluetoothDevice(selectedDeviceName: String) {
-        mRemoteDevice = getDeviceFromBondedList(selectedDeviceName)
+        mRemoteDevice = getDeviceFromBondedList(selectedDeviceName)!!
         var uuid : UUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb")
 
         try {
@@ -202,13 +208,56 @@ class FootActivity2: AppCompatActivity() {
 
 
 
-    protected override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFootBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         receiveData = findViewById(R.id.receiveData)
 
+        checkPermissions()
         activateBluetooth()
     }
+
+    private val PERMISSIONS_STORAGE = arrayOf(
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS,
+        Manifest.permission.BLUETOOTH_SCAN,
+        Manifest.permission.BLUETOOTH_CONNECT,
+        Manifest.permission.BLUETOOTH_PRIVILEGED
+    )
+    private val PERMISSIONS_LOCATION = arrayOf(
+        Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS,
+        Manifest.permission.BLUETOOTH_SCAN,
+        Manifest.permission.BLUETOOTH_CONNECT,
+        Manifest.permission.BLUETOOTH_PRIVILEGED
+    )
+
+    private fun checkPermissions() {
+        val permission1 =
+            ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        val permission2 =
+            ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN)
+        if (permission1 != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                this,
+                PERMISSIONS_STORAGE,
+                1
+            )
+        } else if (permission2 != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                this,
+                PERMISSIONS_LOCATION,
+                1
+            )
+        }
+    }
+
+
 }
