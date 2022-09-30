@@ -46,9 +46,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_foot -> {
                     Log.d("nav", "onCreate: toFoot")
-                    val intent = Intent(this, FootActivity::class.java)
+                    val intent = Intent(this, FootActivity2::class.java)
                     startActivity(intent)
-                    //Log.d("foot_activity_success", "onCreate: 넘아가마ㅏㅏ")
+                    Log.d("foot_activity_success", "onCreate: 넘아가마ㅏㅏ")
                     true
                 }
                 R.id.nav_detail -> {

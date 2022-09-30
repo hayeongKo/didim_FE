@@ -62,7 +62,7 @@ class FootActivity2: AppCompatActivity() {
             finish()
         } else {
             if (!mBluetoothAdapter!!.isEnabled) {
-                var enableBtIntent: Intent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
+                var enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
                 startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT)
             } else {
                 selectPairedDevice()
@@ -183,7 +183,7 @@ class FootActivity2: AppCompatActivity() {
     }
 
     fun connectToBluetoothDevice(selectedDeviceName: String) {
-        var mRemoteDevice = getDeviceFromBondedList(selectedDeviceName)
+        mRemoteDevice = getDeviceFromBondedList(selectedDeviceName)
         var uuid : UUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb")
 
         try {
