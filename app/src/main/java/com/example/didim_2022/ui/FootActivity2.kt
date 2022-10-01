@@ -1,7 +1,6 @@
 package com.example.didim_2022.ui
 
 import android.Manifest
-import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
@@ -20,15 +19,13 @@ import java.lang.Exception
 import java.nio.charset.Charset
 import java.util.*
 import kotlin.collections.ArrayList
-import android.os.Build
 import androidx.core.app.ActivityCompat
 
 import android.content.pm.PackageManager
-import android.opengl.Visibility
 import android.util.Log
 import android.widget.AdapterView.*
-import androidx.core.os.trace
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager.findFragment
 
 
 class FootActivity2: AppCompatActivity() {
@@ -50,7 +47,6 @@ class FootActivity2: AppCompatActivity() {
     var bufferPosition : Int = 0
 
     lateinit var item : ArrayList<String>
-    lateinit var receiveValue : Array<String>
 
     private val sharedManager : SharedManager by lazy { SharedManager(this) }
 
@@ -97,6 +93,7 @@ class FootActivity2: AppCompatActivity() {
         val listDevices = ArrayList<String>()
         for (device in pairedDevices!!) {
             listDevices.add(device.name)
+            //Log.d("listDevices", "selectPairedDevice: " + device.name)
         }
         var mAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, listDevices)
         val listView = findViewById<ListView>(R.id.listview)
@@ -105,7 +102,6 @@ class FootActivity2: AppCompatActivity() {
         item = ArrayList(listDevices.size)
         var items = listDevices.toArray(item.toArray())
 
-        Log.d("itemValue", "selectPairedDevice: " + items)
 
         listView.onItemClickListener =
             OnItemClickListener { parent, view, position, id ->
@@ -119,49 +115,98 @@ class FootActivity2: AppCompatActivity() {
 
     }
 
-
     fun receiveData() {
         val handler = Handler()
         readBuffer = ByteArray(1024)
         bufferPosition = 0
+        mWorkerThread = Thread {
+            while (!Thread.currentThread().isInterrupted) {
+                try {
+                    val bytesAvailable = mInputStream!!.available()
+                    if (bytesAvailable > 0) {
+                        val packetBytes = ByteArray(bytesAvailable)
+                        mInputStream!!.read(packetBytes)
+                        var i = 0
+                        while (i < bytesAvailable) {
+                            if (packetBytes[i].toChar() == '\n') {
+                                val charset: Charset = Charsets.US_ASCII
+                                val data = String(readBuffer, charset)
+                                bufferPosition = 0
+                                handler.post {
+//                                    receiveData!!.text = data
+//                                    receiveValue = data.split(",").toTypedArray()
+                                    //sharedpreference
+                                    var value = receiveData?.let { getReceiveValue(it, data) }!!
 
-        mWorkerThread = Thread(Runnable {
-            fun run() {
-                while (!Thread.currentThread().isInterrupted()) {
-                    try {
-                        val bytesAvailable : Int = mInputStream!!.available()
+                                    getValue(value)
 
-                        if (bytesAvailable > 0) {
-                            var packetBytes = ByteArray(bytesAvailable)
-                            mInputStream!!.read(packetBytes)
-
-                            var i = 0
-                            while (i < bytesAvailable) {
-                                if (packetBytes[i].toChar() == '\n') {
-                                    val charset: Charset = Charsets.US_ASCII
-                                    val data = String(readBuffer!!, charset)
-                                    bufferPosition = 0
-
-                                    handler.post(Runnable {
-                                        fun run() {
-                                            receiveData!!.setText(data)
-                                            receiveValue = data.split(",").toTypedArray()
-                                        }
-                                    })
-                                } else {
-                                    readBuffer!![bufferPosition++] = packetBytes[i]
+                                    Log.d("receiveData", "receiveData: " + receiveData)
                                 }
-                                i += 1
+                            } else {
+                                readBuffer[bufferPosition++] = packetBytes[i]
                             }
-                        }
-                    } catch (ex: IOException) {
-                        finish()
+                            i += 1
+                        } //end of for
                     }
+                } catch (ex: IOException) {
+                    // 데이터 수신 중 오류 발생
+                    finish()
                 }
             }
-        })
-
+        }
         mWorkerThread.start()
+    }
+
+
+//    fun receiveData() {
+//        val handler = Handler()
+//        readBuffer = ByteArray(1024)
+//        bufferPosition = 0
+//        mWorkerThread = Thread(Runnable {
+//            fun run() {
+//                while (!Thread.currentThread().isInterrupted()) {
+//                    try {
+//                        val bytesAvailable : Int = mInputStream!!.available()
+//
+//                        if (bytesAvailable > 0) {
+//                            var packetBytes = ByteArray(bytesAvailable)
+//                            mInputStream!!.read(packetBytes)
+//
+//                            var i = 0
+//                            while (i < bytesAvailable) {
+//                                if (packetBytes[i].toChar() == '\n') {
+//                                    val charset: Charset = Charsets.US_ASCII
+//                                    val data = String(readBuffer!!, charset)
+//                                    bufferPosition = 0
+//
+//                                    handler.post(Runnable {
+//                                        fun run() {
+//                                            receiveData!!.setText(data)
+//                                            receiveValue = data.split(",").toTypedArray()
+//                                            Log.d("receiveData", "run: receiveData" + receiveData)
+//                                        }
+//                                    })
+//                                } else {
+//                                    readBuffer!![bufferPosition++] = packetBytes[i]
+//                                }
+//                                i += 1
+//                            }
+//                        }
+//                    } catch (ex: IOException) {
+//                        finish()
+//                    }
+//                }
+//            }
+//        })
+//
+//        mWorkerThread.start()
+//    }
+
+    fun getReceiveValue (textView: TextView, data: String): Array<String> {
+        var receiveValue : Array<String>
+        textView.text = data
+        receiveValue = data.split(",").toTypedArray()
+        return receiveValue
     }
 
 
@@ -179,18 +224,18 @@ class FootActivity2: AppCompatActivity() {
         return selectedDevice
     }
 
-    @Override
-    override fun onDestroy() {
-        try {
-            mWorkerThread.interrupt()
-            mInputStream?.close()
-            mOutputStream?.close()
-            mSocket?.close()
-        } catch (e: Exception) {
-
-        }
-        super.onDestroy()
-    }
+//    @Override
+//    override fun onDestroy() {
+//        try {
+//            mWorkerThread.interrupt()
+//            mInputStream?.close()
+//            mOutputStream?.close()
+//            mSocket?.close()
+//        } catch (e: Exception) {
+//
+//        }
+//        super.onDestroy()
+//    }
 
     fun connectToBluetoothDevice(selectedDeviceName: String) {
         mRemoteDevice = getDeviceFromBondedList(selectedDeviceName)!!
@@ -219,82 +264,13 @@ class FootActivity2: AppCompatActivity() {
 
         receiveData = findViewById(R.id.receiveData)
 
-
-        checkPermissions()
         activateBluetooth()
         //setPeakLeft(receiveData[3].toInt())
         //setPeakRight(receiveData[4].toInt())
-        //sharedpreference
-        val currentSensor = Sensor().apply {
-            count += receiveValue[0].toInt()
-            when(receiveValue[1]){
-                "0" -> {
-                    miss += 1
-                    score = "miss"
-                }
-                "1" -> {
-                    bad += 1
-                    score = "bad"
-                }
-                "2" -> {
-                    good += 1
-                    score = "good"
-                }
-                "3" -> {
-                    perfect += 1
-                    score = "perfect"
-                }
-            }
-            when(receiveValue[2]){
-                "1" -> ajudge = "바른 걸음"
-                "2" -> ajudge = "팔자 걸음"
-                "3" -> ajudge = "안짱 걸음"
-                else -> ajudge = "이전과 똑같이 걷고 있어"
-            }
-        }
-        sharedManager.saveCurrentSensor(currentSensor)
-
-        finish()
     }
 
-    private val PERMISSIONS_STORAGE = arrayOf(
-        Manifest.permission.READ_EXTERNAL_STORAGE,
-        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-        Manifest.permission.ACCESS_FINE_LOCATION,
-        Manifest.permission.ACCESS_COARSE_LOCATION,
-        Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS,
-        Manifest.permission.BLUETOOTH_SCAN,
-        Manifest.permission.BLUETOOTH_CONNECT,
-        Manifest.permission.BLUETOOTH_PRIVILEGED
-    )
-    private val PERMISSIONS_LOCATION = arrayOf(
-        Manifest.permission.ACCESS_FINE_LOCATION,
-        Manifest.permission.ACCESS_COARSE_LOCATION,
-        Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS,
-        Manifest.permission.BLUETOOTH_SCAN,
-        Manifest.permission.BLUETOOTH_CONNECT,
-        Manifest.permission.BLUETOOTH_PRIVILEGED
-    )
-
-    private fun checkPermissions() {
-        val permission1 =
-            ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        val permission2 =
-            ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN)
-        if (permission1 != PackageManager.PERMISSION_GRANTED) {
-            // We don't have permission so prompt the user
-            ActivityCompat.requestPermissions(
-                this,
-                PERMISSIONS_STORAGE,
-                1
-            )
-        } else if (permission2 != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(
-                this,
-                PERMISSIONS_LOCATION,
-                1
-            )
-        }
+    override fun onResume() {
+        super.onResume()
     }
 
     fun setPeakLeft(int : Int) {
@@ -302,35 +278,35 @@ class FootActivity2: AppCompatActivity() {
             1 -> {
                 binding.footLeftCircleChecked1Iv.visibility = VISIBLE
                 binding.footLeftCircleChecked2Iv.visibility = GONE
-                binding.footLeftCircleChecked3Iv.visibility = GONE
+                binding.footLeftCircleChecked5Iv.visibility = GONE
                 binding.footLeftCircleChecked4Iv.visibility = GONE
                 binding.footLeftCircleChecked6Iv.visibility = GONE
             }
             2 -> {
                 binding.footLeftCircleChecked1Iv.visibility = GONE
                 binding.footLeftCircleChecked2Iv.visibility = VISIBLE
-                binding.footLeftCircleChecked3Iv.visibility = GONE
+                binding.footLeftCircleChecked5Iv.visibility = GONE
                 binding.footLeftCircleChecked4Iv.visibility = GONE
                 binding.footLeftCircleChecked6Iv.visibility = GONE
             }
             4-> {
                 binding.footLeftCircleChecked1Iv.visibility = GONE
                 binding.footLeftCircleChecked2Iv.visibility = GONE
-                binding.footLeftCircleChecked3Iv.visibility = VISIBLE
+                binding.footLeftCircleChecked5Iv.visibility = VISIBLE
                 binding.footLeftCircleChecked4Iv.visibility = GONE
                 binding.footLeftCircleChecked6Iv.visibility = GONE
             }
             5 -> {
                 binding.footLeftCircleChecked1Iv.visibility = GONE
                 binding.footLeftCircleChecked2Iv.visibility = GONE
-                binding.footLeftCircleChecked3Iv.visibility = GONE
+                binding.footLeftCircleChecked5Iv.visibility = GONE
                 binding.footLeftCircleChecked4Iv.visibility = VISIBLE
                 binding.footLeftCircleChecked6Iv.visibility = GONE
             }
             6 -> {
                 binding.footLeftCircleChecked1Iv.visibility = GONE
                 binding.footLeftCircleChecked2Iv.visibility = GONE
-                binding.footLeftCircleChecked3Iv.visibility = GONE
+                binding.footLeftCircleChecked5Iv.visibility = GONE
                 binding.footLeftCircleChecked4Iv.visibility = GONE
                 binding.footLeftCircleChecked6Iv.visibility = VISIBLE
             }
@@ -342,35 +318,35 @@ class FootActivity2: AppCompatActivity() {
             1 -> {
                 binding.footRightCircleChecked1Iv.visibility = VISIBLE
                 binding.footRightCircleChecked2Iv.visibility = GONE
-                binding.footRightCircleChecked3Iv.visibility = GONE
+                binding.footRightCircleChecked5Iv.visibility = GONE
                 binding.footRightCircleChecked4Iv.visibility = GONE
                 binding.footRightCircleChecked6Iv.visibility = GONE
             }
             2 -> {
                 binding.footRightCircleChecked1Iv.visibility = GONE
                 binding.footRightCircleChecked2Iv.visibility = VISIBLE
-                binding.footRightCircleChecked3Iv.visibility = GONE
+                binding.footRightCircleChecked5Iv.visibility = GONE
                 binding.footRightCircleChecked4Iv.visibility = GONE
                 binding.footRightCircleChecked6Iv.visibility = GONE
             }
             4-> {
                 binding.footRightCircleChecked1Iv.visibility = GONE
                 binding.footRightCircleChecked2Iv.visibility = GONE
-                binding.footRightCircleChecked3Iv.visibility = VISIBLE
+                binding.footRightCircleChecked5Iv.visibility = VISIBLE
                 binding.footRightCircleChecked4Iv.visibility = GONE
                 binding.footRightCircleChecked6Iv.visibility = GONE
             }
             5 -> {
                 binding.footRightCircleChecked1Iv.visibility = GONE
                 binding.footRightCircleChecked2Iv.visibility = GONE
-                binding.footRightCircleChecked3Iv.visibility = GONE
+                binding.footRightCircleChecked5Iv.visibility = GONE
                 binding.footRightCircleChecked4Iv.visibility = VISIBLE
                 binding.footRightCircleChecked6Iv.visibility = GONE
             }
             6 -> {
                 binding.footRightCircleChecked1Iv.visibility = GONE
                 binding.footRightCircleChecked2Iv.visibility = GONE
-                binding.footRightCircleChecked3Iv.visibility = GONE
+                binding.footRightCircleChecked5Iv.visibility = GONE
                 binding.footRightCircleChecked4Iv.visibility = GONE
                 binding.footRightCircleChecked6Iv.visibility = VISIBLE
             }
@@ -389,12 +365,38 @@ class FootActivity2: AppCompatActivity() {
         bundle.putInt("perfect", currentSensor.perfect)
 
         fragment.arguments = bundle
-        setFragment(fragment)
     }
-    fun setFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager. beginTransaction()
-        transaction.replace(R.id.FragmentHome, fragment)
-        transaction.commit()
+
+
+    fun getValue(value : Array<String>) {
+        val currentSensor = Sensor().apply {
+            count += value!![0].toInt()
+            when(value!![1]){
+                "0" -> {
+                    miss += 1
+                    score = "miss"
+                }
+                "1" -> {
+                    bad += 1
+                    score = "bad"
+                }
+                "2" -> {
+                    good += 1
+                    score = "good"
+                }
+                "3" -> {
+                    perfect += 1
+                    score = "perfect"
+                }
+            }
+            when(value!![2]){
+                "1" -> ajudge = "바른 걸음"
+                "2" -> ajudge = "팔자 걸음"
+                "3" -> ajudge = "안짱 걸음"
+                else -> ajudge = "이전과 똑같이 걷고 있어"
+            }
+        }
+        sharedManager.saveCurrentSensor(currentSensor)
     }
 
 

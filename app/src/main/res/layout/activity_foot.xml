@@ -163,6 +163,7 @@
             android:id="@+id/receiveData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="센서값"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/foot_iv"
@@ -175,21 +176,32 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#ffbce55c"
-                android:layout_marginTop="30dp"
-                android:id="@+id/selectBT"
-                android:textSize="25dp"
-                android:text="아래에서 페어링된 블루투스 장치를 선택하세요! " />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="#ffbce55c"
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/selectBT"
+                    android:textSize="25dp"
+                    android:text="아래에서 페어링된 블루투스 장치를 선택하세요! " />
 
-        <ListView
+            <ListView
                 android:id="@+id/listview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/selectBT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="received data"
-                />
+            />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
