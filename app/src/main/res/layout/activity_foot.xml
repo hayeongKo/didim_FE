@@ -34,8 +34,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/foot_iv"
-            app:layout_constraintTop_toBottomOf="@id/foot_left_circle_checked_1_iv"
+            app:layout_constraintTop_toTopOf="@id/foot_iv"
             android:layout_marginLeft="220px"
+            android:layout_marginTop="150px"
             android:src="@drawable/tutorial_circle_checked"
             android:visibility="gone"
             />
@@ -57,8 +58,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/foot_iv"
-            app:layout_constraintTop_toTopOf="@id/foot_left_circle_checked_2_iv"
-            android:layout_marginTop="60px"
+            app:layout_constraintTop_toTopOf="@id/foot_iv"
+            android:layout_marginTop="250px"
+            android:layout_marginStart="70px"
             android:src="@drawable/tutorial_circle_checked"
             android:visibility="gone"
             />
@@ -160,14 +162,35 @@
             />
 
     <TextView
-            android:id="@+id/receiveData"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="센서값"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/foot_iv"
-            />
+        android:id="@+id/receiveData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="센서값"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/foot_iv"
+    />
+
+    <TextView
+        android:id="@+id/receiveData_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="score"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/foot_iv"
+    />
+
+    <TextView
+        android:id="@+id/receiveData_ajudge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ajudge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/receiveData_score"
+    />
+
 
     <LinearLayout
             android:layout_width="wrap_content"
@@ -204,6 +227,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/toHomebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="홈으로"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

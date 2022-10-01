@@ -26,11 +26,15 @@ import android.util.Log
 import android.widget.AdapterView.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.findFragment
+import androidx.fragment.app.FragmentTransaction
+import com.example.didim_2022.databinding.FragmentHomeBinding
 
 
 class FootActivity2: AppCompatActivity() {
 
     var receiveData : TextView? = null
+    var score : TextView? = null
+    var ajudge : TextView? = null
     var connecting = false
 
     val REQUEST_ENABLE_BT : Int = 10
@@ -64,6 +68,24 @@ class FootActivity2: AppCompatActivity() {
             }
         }
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityFootBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        receiveData = findViewById(R.id.receiveData)
+        score = findViewById(R.id.receiveData_score)
+        ajudge = findViewById(R.id.receiveData_ajudge)
+
+
+        binding.toHomebtn.setOnClickListener {
+            val nextIntent = Intent(this, MainActivity::class.java)
+            startActivity(nextIntent)
+        }
+
+        activateBluetooth()
     }
 
     fun activateBluetooth() {
@@ -137,10 +159,12 @@ class FootActivity2: AppCompatActivity() {
 //                                    receiveValue = data.split(",").toTypedArray()
                                     //sharedpreference
                                     var value = receiveData?.let { getReceiveValue(it, data) }!!
+                                    var homeFragment = HomeFragment()
 
                                     getValue(value)
-
-                                    Log.d("receiveData", "receiveData: " + receiveData)
+                                    setDataAtFragment(homeFragment)
+                                    setPeakLeft(value[3].toInt())
+                                    setPeakRight(value[4].toInt())
                                 }
                             } else {
                                 readBuffer[bufferPosition++] = packetBytes[i]
@@ -156,51 +180,6 @@ class FootActivity2: AppCompatActivity() {
         }
         mWorkerThread.start()
     }
-
-
-//    fun receiveData() {
-//        val handler = Handler()
-//        readBuffer = ByteArray(1024)
-//        bufferPosition = 0
-//        mWorkerThread = Thread(Runnable {
-//            fun run() {
-//                while (!Thread.currentThread().isInterrupted()) {
-//                    try {
-//                        val bytesAvailable : Int = mInputStream!!.available()
-//
-//                        if (bytesAvailable > 0) {
-//                            var packetBytes = ByteArray(bytesAvailable)
-//                            mInputStream!!.read(packetBytes)
-//
-//                            var i = 0
-//                            while (i < bytesAvailable) {
-//                                if (packetBytes[i].toChar() == '\n') {
-//                                    val charset: Charset = Charsets.US_ASCII
-//                                    val data = String(readBuffer!!, charset)
-//                                    bufferPosition = 0
-//
-//                                    handler.post(Runnable {
-//                                        fun run() {
-//                                            receiveData!!.setText(data)
-//                                            receiveValue = data.split(",").toTypedArray()
-//                                            Log.d("receiveData", "run: receiveData" + receiveData)
-//                                        }
-//                                    })
-//                                } else {
-//                                    readBuffer!![bufferPosition++] = packetBytes[i]
-//                                }
-//                                i += 1
-//                            }
-//                        }
-//                    } catch (ex: IOException) {
-//                        finish()
-//                    }
-//                }
-//            }
-//        })
-//
-//        mWorkerThread.start()
-//    }
 
     fun getReceiveValue (textView: TextView, data: String): Array<String> {
         var receiveValue : Array<String>
@@ -256,22 +235,6 @@ class FootActivity2: AppCompatActivity() {
     }
 
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityFootBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        receiveData = findViewById(R.id.receiveData)
-
-        activateBluetooth()
-        //setPeakLeft(receiveData[3].toInt())
-        //setPeakRight(receiveData[4].toInt())
-    }
-
-    override fun onResume() {
-        super.onResume()
-    }
 
     fun setPeakLeft(int : Int) {
         when(int) {
@@ -397,6 +360,10 @@ class FootActivity2: AppCompatActivity() {
             }
         }
         sharedManager.saveCurrentSensor(currentSensor)
+        score!!.text = currentSensor.score
+        ajudge!!.text = currentSensor.ajudge
+
+        Log.d("GetValue", "getValue: " + currentSensor.score + currentSensor.miss)
     }
 
 

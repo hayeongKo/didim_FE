@@ -1,6 +1,7 @@
 package com.example.didim_2022.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,20 @@ class HomeFragment: Fragment() {
     private var perfect: Int? = null
 
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            count = it.getInt("count")
+            score = it.getString("score")
+            ajudge = it.getString("ajudge")
+            miss = it.getInt("miss")
+            bad = it.getInt("bad")
+            good = it.getInt("good")
+            perfect = it.getInt("perfect")
+        }
+        Log.d("넘어온데이터", "onCreate: " + score + miss)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,18 +57,7 @@ class HomeFragment: Fragment() {
         return binding.root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            count = it.getInt("count")
-            score = it.getString("score")
-            ajudge = it.getString("ajudge")
-            miss = it.getInt("miss")
-            bad = it.getInt("bad")
-            good = it.getInt("good")
-            perfect = it.getInt("perfect")
-        }
-    }
+
 
     private fun changeFragment(fragment: Fragment) {
         (context as MainActivity).supportFragmentManager.beginTransaction()
