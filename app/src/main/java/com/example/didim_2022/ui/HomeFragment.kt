@@ -15,30 +15,16 @@ import getCount
 import getGood
 import getMiss
 import getPerfect
+import java.time.LocalDate
 import kotlin.math.roundToInt
 
 class HomeFragment: Fragment() {
     lateinit var binding: FragmentHomeBinding
 
-    //private val sharedManager : SharedManager by lazy { SharedManager(this) }
-
-    private var count: Int? = null
-    private var miss: Int? = null
-    private var bad: Int? = null
-    private var good: Int? = null
-    private var perfect: Int? = null
-
+    //val localDate = LocalDate.now()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //sharedManager.getCurrentSensor()
-        arguments?.let {
-            count = it.getInt("count")
-            miss = it.getInt("miss")
-            bad = it.getInt("bad")
-            good = it.getInt("good")
-            perfect = it.getInt("perfect")
-        }
         Log.d("spf", "spf: " + getCount(requireContext()) +"/"+ getPerfect(requireContext()) +"/"+ getGood(requireContext()) +"/"+ getBad(requireContext()) +"/"+ getMiss(requireContext()))
     }
 
@@ -59,12 +45,11 @@ class HomeFragment: Fragment() {
         }
 
         binding.homeCountTv.setText("${getCount(requireContext())}")
-        binding.homeComboPerfectTimesTv.setText("${getPerfect(requireContext())}")
-        binding.homeComboGoodTimesTv.setText("${getGood(requireContext())}")
-        binding.homeComboBadTimesTv.setText("${getBad(requireContext())}")
-        binding.homeComboMissTimesTv.setText("${getMiss(requireContext())}")
-        val toInt = getCount(requireContext()).toInt()*0.74
-        binding.homeRunningdstTv.setText("${toInt.roundToInt()}")
+        binding.homeComboPerfectTimesTv.setText("${getPerfect(requireContext())}번")
+        binding.homeComboGoodTimesTv.setText("${getGood(requireContext())}번")
+        binding.homeComboBadTimesTv.setText("${getBad(requireContext())}번")
+        binding.homeComboMissTimesTv.setText("${getMiss(requireContext())}번")
+        binding.homeRunningdstTv.setText("${getCount(requireContext())*0.74}")
         return binding.root
     }
 

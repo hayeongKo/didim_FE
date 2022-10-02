@@ -1,18 +1,18 @@
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 
-fun saveCount(context: Context, count:String) {
+fun saveCount(context: Context, count:Int) {
     val spf = context.getSharedPreferences("sensor", AppCompatActivity.MODE_PRIVATE)
     val editor = spf.edit()
 
-    editor.putString("ccount", count)
+    editor.putInt("ccount", count)
     editor.apply()
 }
 
-fun getCount(context:Context): String {
+fun getCount(context:Context): Int {
     val spf = context.getSharedPreferences("sensor", AppCompatActivity.MODE_PRIVATE)
 
-    return spf.getString("ccount", "")!!
+    return spf.getInt("ccount", 0)!!
 }
 
 fun savePerfect(context: Context, cperfect : Int) {

@@ -168,10 +168,8 @@ class FootActivity2: AppCompatActivity() {
                                 handler.post {
                                     //sharedpreference
                                     var value = receiveData?.let { getReceiveValue(it, data) }!!
-                                    var homeFragment = HomeFragment()
 
                                     getValue(value)
-                                    //setDataAtFragment(homeFragment)
                                     setPeakLeft(value[3].toInt())
                                     setPeakRight(value[4].toInt())
                                 }
@@ -363,7 +361,7 @@ class FootActivity2: AppCompatActivity() {
         score!!.text = currentSensor.score
         ajudge!!.text = currentSensor.ajudge
         count!!.text = currentSensor.count
-        saveCount(this, currentSensor.count.toString())
+        saveCount(this, currentSensor.count!!.toInt())
         saveMiss(this, cmiss)
         saveBad(this, cbad)
         saveGood(this, cgood)
