@@ -15,6 +15,7 @@ import getCount
 import getGood
 import getMiss
 import getPerfect
+import kotlin.math.roundToInt
 
 class HomeFragment: Fragment() {
     lateinit var binding: FragmentHomeBinding
@@ -62,7 +63,8 @@ class HomeFragment: Fragment() {
         binding.homeComboGoodTimesTv.setText("${getGood(requireContext())}")
         binding.homeComboBadTimesTv.setText("${getBad(requireContext())}")
         binding.homeComboMissTimesTv.setText("${getMiss(requireContext())}")
-        binding.homeRunningdstTv.setText("${getCount(requireContext()).toInt()*0.74}")
+        val toInt = getCount(requireContext()).toInt()*0.74
+        binding.homeRunningdstTv.setText("${toInt.roundToInt()}")
         return binding.root
     }
 

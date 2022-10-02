@@ -1,9 +1,11 @@
 package com.example.didim_2022.ui
 
+import android.Manifest
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -21,6 +23,7 @@ import kotlin.collections.ArrayList
 
 import android.util.Log
 import android.widget.AdapterView.*
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import saveBad
 import saveCount
@@ -92,6 +95,7 @@ class FootActivity2: AppCompatActivity() {
             startActivity(nextIntent)
         }
 
+        checkPermissions()
         activateBluetooth()
     }
 
@@ -321,19 +325,6 @@ class FootActivity2: AppCompatActivity() {
         }
     }
 
-    fun setDataAtFragment(fragment: Fragment) {
-        val currentSensor = sharedManager.getCurrentSensor()
-        val bundle = Bundle()
-
-        bundle.putString("count", currentSensor.count)
-        bundle.putInt("miss", cmiss)
-        bundle.putInt("bad", cbad)
-        bundle.putInt("good", cgood)
-        bundle.putInt("perfect", cperfect)
-
-        fragment.arguments = bundle
-    }
-
 
     fun getValue(value : Array<String>) {
         val currentSensor = Sensor().apply {
@@ -378,6 +369,46 @@ class FootActivity2: AppCompatActivity() {
         saveGood(this, cgood)
         savePerfect(this, cperfect)
         Log.d("GetValue", "getValue: " + currentSensor.score + currentSensor.miss + currentSensor.count)
+    }
+
+    private val PERMISSIONS_STORAGE = arrayOf(
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS,
+        Manifest.permission.BLUETOOTH_SCAN,
+        Manifest.permission.BLUETOOTH_CONNECT,
+        Manifest.permission.BLUETOOTH_PRIVILEGED
+    )
+    private val PERMISSIONS_LOCATION = arrayOf(
+        Manifest.permission.ACCESS_FINE_LOCATION,
+        Manifest.permission.ACCESS_COARSE_LOCATION,
+        Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS,
+        Manifest.permission.BLUETOOTH_SCAN,
+        Manifest.permission.BLUETOOTH_CONNECT,
+        Manifest.permission.BLUETOOTH_PRIVILEGED
+    )
+
+    private fun checkPermissions() {
+        val permission1 =
+            ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        val permission2 =
+            ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN)
+        if (permission1 != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                this,
+                PERMISSIONS_STORAGE,
+                1
+            )
+        } else if (permission2 != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                this,
+                PERMISSIONS_LOCATION,
+                1
+            )
+        }
     }
 
 
