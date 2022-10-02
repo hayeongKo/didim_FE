@@ -1,22 +1,27 @@
 package com.example.didim_2022.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import app.akexorcist.bluetotohspp.library.BluetoothSPP
 import com.example.didim_2022.R
 import com.example.didim_2022.databinding.FragmentHomeBinding
 import com.example.didim_2022.ui.tutorial.Tutorial2Fragment
+import getBad
+import getCount
+import getGood
+import getMiss
+import getPerfect
 
 class HomeFragment: Fragment() {
     lateinit var binding: FragmentHomeBinding
 
+    //private val sharedManager : SharedManager by lazy { SharedManager(this) }
+
     private var count: Int? = null
-    private var score: String? = null
-    private var ajudge: String? = null
     private var miss: Int? = null
     private var bad: Int? = null
     private var good: Int? = null
@@ -25,16 +30,15 @@ class HomeFragment: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //sharedManager.getCurrentSensor()
         arguments?.let {
             count = it.getInt("count")
-            score = it.getString("score")
-            ajudge = it.getString("ajudge")
             miss = it.getInt("miss")
             bad = it.getInt("bad")
             good = it.getInt("good")
             perfect = it.getInt("perfect")
         }
-        Log.d("넘어온데이터", "onCreate: " + score + miss)
+        Log.d("spf", "spf: " + getCount(requireContext()) +"/"+ getPerfect(requireContext()) +"/"+ getGood(requireContext()) +"/"+ getBad(requireContext()) +"/"+ getMiss(requireContext()))
     }
 
     override fun onCreateView(
@@ -47,17 +51,20 @@ class HomeFragment: Fragment() {
         binding.homeTutorialBgIv.setOnClickListener {
             changeFragment(Tutorial2Fragment())
         }
-        binding.homeCountTv.setText("${count}")
-        binding.homeComboTv.setText("${score}")
-        binding.homeAjudgeTv.setText("${ajudge}")
-        binding.homeComboPerfectTimesTv.setText("${perfect}")
-        binding.homeComboGoodTimesTv.setText("${good}")
-        binding.homeComboBadTimesTv.setText("${bad}")
-        binding.homeComboMissTimesTv.setText("${miss}")
+
+        binding.homeWalkingStartTv.setOnClickListener {
+            val intent = Intent(context, FootActivity2::class.java)
+            startActivity(intent)
+        }
+
+        binding.homeCountTv.setText("${getCount(requireContext())}")
+        binding.homeComboPerfectTimesTv.setText("${getPerfect(requireContext())}")
+        binding.homeComboGoodTimesTv.setText("${getGood(requireContext())}")
+        binding.homeComboBadTimesTv.setText("${getBad(requireContext())}")
+        binding.homeComboMissTimesTv.setText("${getMiss(requireContext())}")
+        binding.homeRunningdstTv.setText("${getCount(requireContext()).toInt()*0.74}")
         return binding.root
     }
-
-
 
     private fun changeFragment(fragment: Fragment) {
         (context as MainActivity).supportFragmentManager.beginTransaction()

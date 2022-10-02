@@ -8,62 +8,50 @@
 
 
     <ImageView
-            android:id="@+id/foot_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/tutorial_foot"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
+        android:id="@+id/foot_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/tutorial_foot"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+    />
 
     <ImageView
-            android:id="@+id/foot_left_circle_checked_1_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/foot_iv"
-            app:layout_constraintTop_toTopOf="@id/foot_iv"
-            android:layout_marginLeft="200px"
-            android:src="@drawable/tutorial_circle_checked"
-            android:visibility="gone"
-            />
+        android:id="@+id/foot_left_circle_checked_1_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginLeft="200px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
+    />
 
     <ImageView
-            android:id="@+id/foot_left_circle_checked_2_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/foot_iv"
-            app:layout_constraintTop_toTopOf="@id/foot_iv"
-            android:layout_marginLeft="220px"
-            android:layout_marginTop="150px"
-            android:src="@drawable/tutorial_circle_checked"
-            android:visibility="gone"
-            />
-
-<!--    <ImageView-->
-<!--            android:id="@+id/foot_left_circle_checked_3_iv"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintStart_toStartOf="@id/foot_iv"-->
-<!--            app:layout_constraintTop_toTopOf="@id/foot_left_circle_checked_2_iv"-->
-<!--            android:layout_marginTop="20px"-->
-<!--            android:layout_marginLeft="110px"-->
-<!--            android:src="@drawable/tutorial_circle_checked"-->
-<!--            android:visibility="gone"-->
-<!--            />-->
+        android:id="@+id/foot_left_circle_checked_2_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginLeft="220px"
+        android:layout_marginTop="150px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
+    />
 
     <ImageView
-            android:id="@+id/foot_left_circle_checked_4_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/foot_iv"
-            app:layout_constraintTop_toTopOf="@id/foot_iv"
-            android:layout_marginTop="250px"
-            android:layout_marginStart="70px"
-            android:src="@drawable/tutorial_circle_checked"
-            android:visibility="gone"
-            />
+        android:id="@+id/foot_left_circle_checked_4_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginTop="250px"
+        android:layout_marginStart="70px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
+    />
 
     <ImageView
             android:id="@+id/foot_left_circle_checked_5_iv"
@@ -113,53 +101,41 @@
             android:visibility="gone"
             />
 
-<!--    <ImageView-->
-<!--            android:id="@+id/foot_right_circle_checked_3_iv"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintEnd_toEndOf="@id/foot_iv"-->
-<!--            app:layout_constraintTop_toTopOf="@id/foot_iv"-->
-<!--            android:layout_marginTop="320px"-->
-<!--            android:layout_marginRight="120px"-->
-<!--            android:src="@drawable/tutorial_circle_checked"-->
-<!--            android:visibility="gone"-->
-<!--            />-->
+    <ImageView
+        android:id="@+id/foot_right_circle_checked_4_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginTop="350px"
+        android:layout_marginRight="30px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
+    />
 
     <ImageView
-            android:id="@+id/foot_right_circle_checked_4_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/foot_iv"
-            app:layout_constraintTop_toTopOf="@id/foot_iv"
-            android:layout_marginTop="350px"
-            android:layout_marginRight="30px"
-            android:src="@drawable/tutorial_circle_checked"
-            android:visibility="gone"
-            />
+        android:id="@+id/foot_right_circle_checked_5_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginTop="580px"
+        android:layout_marginRight="150px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
+    />
 
     <ImageView
-            android:id="@+id/foot_right_circle_checked_5_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/foot_iv"
-            app:layout_constraintTop_toTopOf="@id/foot_iv"
-            android:layout_marginTop="580px"
-            android:layout_marginRight="150px"
-            android:src="@drawable/tutorial_circle_checked"
-            android:visibility="gone"
-            />
-
-    <ImageView
-            android:id="@+id/foot_right_circle_checked_6_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/foot_iv"
-            app:layout_constraintTop_toTopOf="@id/foot_iv"
-            android:layout_marginTop="740px"
-            android:layout_marginRight="270px"
-            android:src="@drawable/tutorial_circle_checked"
-            android:visibility="gone"
-            />
+        android:id="@+id/foot_right_circle_checked_6_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/foot_iv"
+        app:layout_constraintTop_toTopOf="@id/foot_iv"
+        android:layout_marginTop="740px"
+        android:layout_marginRight="270px"
+        android:src="@drawable/tutorial_circle_checked"
+        android:visibility="gone"
+    />
 
     <TextView
         android:id="@+id/receiveData"
@@ -176,9 +152,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="score"
+        android:textColor="@color/home_combo_perfect"
+        android:textSize="150px"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/foot_iv"
+        app:layout_constraintBottom_toTopOf="@id/foot_iv"
+        android:layout_marginBottom="100px"
     />
 
     <TextView
@@ -186,55 +166,80 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ajudge"
+        android:textColor="@color/home_combo_perfect"
+        android:textSize="100px"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/receiveData_score"
+        app:layout_constraintTop_toBottomOf="@id/foot_iv"
+    />
+
+    <TextView
+        android:id="@+id/receiveData_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="count"
+        android:textColor="@color/home_combo_perfect"
+        android:textSize="100px"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/receiveData_ajudge"
     />
 
 
-    <LinearLayout
+
+    <ScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:background="#ffbce55c"
-                    android:layout_marginTop="30dp"
-                    android:id="@+id/selectBT"
-                    android:textSize="25dp"
-                    android:text="아래에서 페어링된 블루투스 장치를 선택하세요! " />
-
-            <ListView
-                android:id="@+id/listview"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/selectBT"
+            app:layout_constraintTop_toBottomOf="@id/foot_iv">
+        <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="received data"
-            />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:background="#ffbce55c"
+                        android:id="@+id/selectBT"
+                        android:textSize="25dp"
+                        android:text="아래에서 페어링된 블루투스 장치를 선택하세요! " />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <ListView
+                        android:id="@+id/listview"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/selectBT"
+                        android:layout_width="wrap_content"
+                        android:layout_height="500px"
+                        android:text="received data"
+                        />
 
-    </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 
     <Button
         android:id="@+id/toHomebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="홈으로"
+        android:background="#FF007AFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="100px"/>
 
 
 

@@ -1,7 +1,7 @@
 package com.example.didim_2022.ui
 
 data class Sensor(
-    var count:Int = 0,
+    var count:String? = null,
     var score:String? = null,
     var ajudge:String? = null,
     var miss:Int = 0,

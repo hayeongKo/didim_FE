@@ -27,44 +27,19 @@
         app:layout_constraintBottom_toBottomOf="@id/home_background_1_iv"
         />
 
+
     <TextView
-        android:id="@+id/home_didimqst_tv"
+        android:id="@+id/home_walking_start_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="현재 당신의 디딤은?"
-        android:textSize="80px"
+        android:text="걷기 시작하려면 눌러!"
+        android:textColor="@color/home_combo_perfect"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textSize="100px"
         app:layout_constraintStart_toStartOf="@id/home_circle_iv"
         app:layout_constraintEnd_toEndOf="@id/home_circle_iv"
         app:layout_constraintTop_toTopOf="@id/home_circle_iv"
-        android:layout_marginTop="280px"
-        />
-
-    <TextView
-        android:id="@+id/home_combo_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PERFECT!"
-        android:textColor="@color/home_combo_perfect"
-        android:textStyle="bold"
-        android:textSize="100px"
-        app:layout_constraintStart_toStartOf="@id/home_circle_iv"
-        app:layout_constraintEnd_toEndOf="@id/home_circle_iv"
-        app:layout_constraintTop_toBottomOf="@id/home_didimqst_tv"
-        android:layout_marginTop="60px"
-        />
-    <TextView
-        android:id="@+id/home_ajudge_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ajudge"
-        android:textColor="@color/home_combo_perfect"
-        android:textStyle="bold"
-        android:textSize="100px"
-        app:layout_constraintStart_toStartOf="@id/home_circle_iv"
-        app:layout_constraintEnd_toEndOf="@id/home_circle_iv"
-        app:layout_constraintTop_toBottomOf="@id/home_combo_tv"
+        app:layout_constraintBottom_toBottomOf="@id/home_circle_iv"
         android:layout_marginTop="60px"
     />
 

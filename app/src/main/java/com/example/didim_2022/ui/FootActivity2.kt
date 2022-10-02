@@ -1,6 +1,5 @@
 package com.example.didim_2022.ui
 
-import android.Manifest
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
@@ -19,15 +18,15 @@ import java.lang.Exception
 import java.nio.charset.Charset
 import java.util.*
 import kotlin.collections.ArrayList
-import androidx.core.app.ActivityCompat
 
-import android.content.pm.PackageManager
 import android.util.Log
 import android.widget.AdapterView.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager.findFragment
-import androidx.fragment.app.FragmentTransaction
-import com.example.didim_2022.databinding.FragmentHomeBinding
+import saveBad
+import saveCount
+import saveGood
+import saveMiss
+import savePerfect
 
 
 class FootActivity2: AppCompatActivity() {
@@ -35,7 +34,14 @@ class FootActivity2: AppCompatActivity() {
     var receiveData : TextView? = null
     var score : TextView? = null
     var ajudge : TextView? = null
+    var count : TextView? = null
     var connecting = false
+
+    var cmiss : Int = 0
+    var cbad : Int = 0
+    var cgood : Int = 0
+    var cperfect : Int = 0
+
 
     val REQUEST_ENABLE_BT : Int = 10
     lateinit var mBluetoothAdapter : BluetoothAdapter
@@ -78,6 +84,7 @@ class FootActivity2: AppCompatActivity() {
         receiveData = findViewById(R.id.receiveData)
         score = findViewById(R.id.receiveData_score)
         ajudge = findViewById(R.id.receiveData_ajudge)
+        count = findViewById(R.id.receiveData_count)
 
 
         binding.toHomebtn.setOnClickListener {
@@ -155,14 +162,12 @@ class FootActivity2: AppCompatActivity() {
                                 val data = String(readBuffer, charset)
                                 bufferPosition = 0
                                 handler.post {
-//                                    receiveData!!.text = data
-//                                    receiveValue = data.split(",").toTypedArray()
                                     //sharedpreference
                                     var value = receiveData?.let { getReceiveValue(it, data) }!!
                                     var homeFragment = HomeFragment()
 
                                     getValue(value)
-                                    setDataAtFragment(homeFragment)
+                                    //setDataAtFragment(homeFragment)
                                     setPeakLeft(value[3].toInt())
                                     setPeakRight(value[4].toInt())
                                 }
@@ -319,13 +324,12 @@ class FootActivity2: AppCompatActivity() {
     fun setDataAtFragment(fragment: Fragment) {
         val currentSensor = sharedManager.getCurrentSensor()
         val bundle = Bundle()
-        bundle.putInt("count", currentSensor.count)
-        bundle.putString("score", currentSensor.score)
-        bundle.putString("ajudge", currentSensor.ajudge)
-        bundle.putInt("miss", currentSensor.miss)
-        bundle.putInt("bad", currentSensor.bad)
-        bundle.putInt("good", currentSensor.good)
-        bundle.putInt("perfect", currentSensor.perfect)
+
+        bundle.putString("count", currentSensor.count)
+        bundle.putInt("miss", cmiss)
+        bundle.putInt("bad", cbad)
+        bundle.putInt("good", cgood)
+        bundle.putInt("perfect", cperfect)
 
         fragment.arguments = bundle
     }
@@ -333,22 +337,26 @@ class FootActivity2: AppCompatActivity() {
 
     fun getValue(value : Array<String>) {
         val currentSensor = Sensor().apply {
-            count += value!![0].toInt()
+            count = value!![0]
             when(value!![1]){
                 "0" -> {
                     miss += 1
+                    cmiss += 1
                     score = "miss"
                 }
                 "1" -> {
                     bad += 1
+                    cbad += 1
                     score = "bad"
                 }
                 "2" -> {
                     good += 1
+                    cgood += 1
                     score = "good"
                 }
                 "3" -> {
                     perfect += 1
+                    cperfect += 1
                     score = "perfect"
                 }
             }
@@ -359,11 +367,17 @@ class FootActivity2: AppCompatActivity() {
                 else -> ajudge = "이전과 똑같이 걷고 있어"
             }
         }
+
         sharedManager.saveCurrentSensor(currentSensor)
         score!!.text = currentSensor.score
         ajudge!!.text = currentSensor.ajudge
-
-        Log.d("GetValue", "getValue: " + currentSensor.score + currentSensor.miss)
+        count!!.text = currentSensor.count
+        saveCount(this, currentSensor.count.toString())
+        saveMiss(this, cmiss)
+        saveBad(this, cbad)
+        saveGood(this, cgood)
+        savePerfect(this, cperfect)
+        Log.d("GetValue", "getValue: " + currentSensor.score + currentSensor.miss + currentSensor.count)
     }
 
 

@@ -1,10 +1,9 @@
 package com.example.didim_2022.ui
 
-import android.content.Context
 import android.content.SharedPreferences
 import com.example.didim_2022.ui.PreferenceHelper.set
 import com.example.didim_2022.ui.PreferenceHelper.get
-class SharedManager(context: Context) {
+class SharedManager(context: FootActivity2) {
     private val prefs:SharedPreferences = PreferenceHelper.defaultPrefs(context)
 
     fun saveCurrentSensor(sensor: Sensor) {
@@ -18,7 +17,7 @@ class SharedManager(context: Context) {
     }
     fun getCurrentSensor():Sensor {
         return Sensor().apply {
-            count = prefs["count", 0]
+            count = prefs["count", ""]
             score = prefs["score", ""]
             ajudge = prefs["ajudge", ""]
             miss = prefs["miss", 0]
