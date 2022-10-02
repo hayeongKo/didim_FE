@@ -169,6 +169,7 @@ class FootActivity2: AppCompatActivity() {
                                     //sharedpreference
                                     var value = receiveData?.let { getReceiveValue(it, data) }!!
 
+                                    Log.d("value55", "value[5]: " + value[5])
                                     getValue(value)
                                     setPeakLeft(value[3].toInt())
                                     setPeakRight(value[4].toInt())
@@ -329,32 +330,60 @@ class FootActivity2: AppCompatActivity() {
             count = value!![0]
             when(value!![1]){
                 "0" -> {
-                    miss += 1
-                    cmiss += 1
                     score = "miss"
                 }
                 "1" -> {
-                    bad += 1
-                    cbad += 1
                     score = "bad"
                 }
                 "2" -> {
-                    good += 1
-                    cgood += 1
                     score = "good"
                 }
                 "3" -> {
-                    perfect += 1
-                    cperfect += 1
                     score = "perfect"
                 }
             }
+            //ajudge
             when(value!![2]){
                 "1" -> ajudge = "바른 걸음"
                 "2" -> ajudge = "팔자 걸음"
                 "3" -> ajudge = "안짱 걸음"
                 else -> ajudge = "이전과 똑같이 걷고 있어"
             }
+
+            if (value!![5] == "1") {
+                //score
+                when(value!![1]){
+                    "0" -> {
+                        miss += 1
+                        cmiss += 1
+                        score = "miss"
+                    }
+                    "1" -> {
+                        bad += 1
+                        cbad += 1
+                        score = "bad"
+                    }
+                    "2" -> {
+                        good += 1
+                        cgood += 1
+                        score = "good"
+                    }
+                    "3" -> {
+                        perfect += 1
+                        cperfect += 1
+                        score = "perfect"
+                    }
+                }
+                Log.d("value[5] == 1", "score: " + score)
+                //ajudge
+                when(value!![2]){
+                    "1" -> ajudge = "바른 걸음"
+                    "2" -> ajudge = "팔자 걸음"
+                    "3" -> ajudge = "안짱 걸음"
+                    else -> ajudge = "이전과 똑같이 걷고 있어"
+                }
+            }
+
         }
 
         sharedManager.saveCurrentSensor(currentSensor)
@@ -366,7 +395,7 @@ class FootActivity2: AppCompatActivity() {
         saveBad(this, cbad)
         saveGood(this, cgood)
         savePerfect(this, cperfect)
-        Log.d("GetValue", "getValue: " + currentSensor.score + currentSensor.miss + currentSensor.count)
+        Log.d("GetValue", "getValue: " + cperfect + cgood + cbad + cmiss)
     }
 
     private val PERMISSIONS_STORAGE = arrayOf(
