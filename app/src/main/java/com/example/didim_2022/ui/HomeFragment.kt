@@ -21,8 +21,6 @@ import kotlin.math.roundToInt
 class HomeFragment: Fragment() {
     lateinit var binding: FragmentHomeBinding
 
-    //val localDate = LocalDate.now()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("spf", "spf: " + getCount(requireContext()) +"/"+ getPerfect(requireContext()) +"/"+ getGood(requireContext()) +"/"+ getBad(requireContext()) +"/"+ getMiss(requireContext()))
