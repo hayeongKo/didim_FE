@@ -53,7 +53,7 @@ class HomeFragment: Fragment() {
             changeFragment(Tutorial2Fragment())
         }
 
-        binding.homeWalkingStartTv.setOnClickListener {
+        binding.homeCircleIv.setOnClickListener {
             val intent = Intent(context, FootActivity2::class.java)
             startActivity(intent)
         }
