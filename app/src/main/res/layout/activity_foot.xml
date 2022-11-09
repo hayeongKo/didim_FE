@@ -224,8 +224,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="500px"
                         android:text="received data"
+                        android:backgroundTint="#1A007AFF"
                         />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>

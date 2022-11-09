@@ -12,14 +12,18 @@ import com.example.didim_2022.databinding.FragmentHomeBinding
 import com.example.didim_2022.ui.tutorial.Tutorial2Fragment
 import getBad
 import getCount
+import getEndTime
 import getGood
 import getMiss
 import getPerfect
+import getStartTime
+import saveStartTime
 import java.time.LocalDate
 import kotlin.math.roundToInt
 
 class HomeFragment: Fragment() {
     lateinit var binding: FragmentHomeBinding
+    var start : Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +44,8 @@ class HomeFragment: Fragment() {
         binding.homeCircleIv.setOnClickListener {
             val intent = Intent(context, FootActivity2::class.java)
             startActivity(intent)
+            start = System.currentTimeMillis();
+            saveStartTime(requireContext(), start)
         }
 
         binding.homeCountTv.setText("${getCount(requireContext())}")
@@ -48,6 +54,10 @@ class HomeFragment: Fragment() {
         binding.homeComboBadTimesTv.setText("${getBad(requireContext())}번")
         binding.homeComboMissTimesTv.setText("${getMiss(requireContext())}번")
         binding.homeRunningdstTv.setText("${getCount(requireContext())*0.74}")
+        binding.homeKcalTv.setText("${getCount(requireContext())*0.04}kcal")
+        val time = String.format("%.2f", (getEndTime(requireContext()) - getStartTime(requireContext())).toDouble() * 0.001)
+        binding.homeTimeTv.setText("${time}초")
+
         return binding.root
     }
 

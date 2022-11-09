@@ -70,3 +70,31 @@ fun getMiss(context: Context): Int {
 
     return spf.getInt("cmiss", 0)!!
 }
+
+fun saveEndTime(context: Context, time : Long) {
+    val spf = context.getSharedPreferences("time", AppCompatActivity.MODE_PRIVATE)
+    val editor = spf.edit()
+
+    editor.putLong("endtime", time)
+    editor.apply()
+}
+
+fun getEndTime(context: Context) : Long {
+    val spf = context.getSharedPreferences("time", AppCompatActivity.MODE_PRIVATE)
+
+    return spf.getLong("endtime", 0L)!!
+}
+
+fun saveStartTime(context: Context, time : Long) {
+    val spf = context.getSharedPreferences("time", AppCompatActivity.MODE_PRIVATE)
+    val editor = spf.edit()
+
+    editor.putLong("starttime", time)
+    editor.apply()
+}
+
+fun getStartTime(context: Context) : Long {
+    val spf = context.getSharedPreferences("time", AppCompatActivity.MODE_PRIVATE)
+
+    return spf.getLong("starttime", 0L)!!
+}

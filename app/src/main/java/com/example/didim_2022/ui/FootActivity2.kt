@@ -27,6 +27,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import saveBad
 import saveCount
+import saveEndTime
 import saveGood
 import saveMiss
 import savePerfect
@@ -39,6 +40,7 @@ class FootActivity2: AppCompatActivity() {
     var ajudge : TextView? = null
     var count : TextView? = null
     var connecting = false
+    var end: Long? = 0
 
     var cmiss : Int = 0
     var cbad : Int = 0
@@ -93,6 +95,8 @@ class FootActivity2: AppCompatActivity() {
         binding.toHomebtn.setOnClickListener {
             val nextIntent = Intent(this, MainActivity::class.java)
             startActivity(nextIntent)
+            end = System.currentTimeMillis()
+            saveEndTime(this, end!!)
         }
 
         checkPermissions()
@@ -169,7 +173,7 @@ class FootActivity2: AppCompatActivity() {
                                     //sharedpreference
                                     var value = receiveData?.let { getReceiveValue(it, data) }!!
 
-                                    Log.d("value55", "value[5]: " + value[5])
+                                    //Log.d("value55", "value[5]: " + value[5])
                                     getValue(value)
                                     setPeakLeft(value[3].toInt())
                                     setPeakRight(value[4].toInt())
@@ -374,7 +378,7 @@ class FootActivity2: AppCompatActivity() {
                         score = "perfect"
                     }
                 }
-                Log.d("value[5] == 1", "score: " + score)
+                //Log.d("value[5] == 1", "score: " + score)
                 //ajudge
                 when(value!![2]){
                     "1" -> ajudge = "바른 걸음"
@@ -395,7 +399,7 @@ class FootActivity2: AppCompatActivity() {
         saveBad(this, cbad)
         saveGood(this, cgood)
         savePerfect(this, cperfect)
-        Log.d("GetValue", "getValue: " + cperfect + cgood + cbad + cmiss)
+        //Log.d("GetValue", "getValue: " + cperfect + cgood + cbad + cmiss)
     }
 
     private val PERMISSIONS_STORAGE = arrayOf(
